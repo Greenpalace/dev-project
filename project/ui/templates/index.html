@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Team D </title>
+    <link rel ='stylesheet' href = 'static/css/home_style.css'>
+
+</head>
+<body>
+    <div id = 'container'>
+        <!-- header -->
+        <header>
+            <div id = 'logo'>
+                <a>
+                    <h1>TeamD</h1>
+                </a>
+            </div>
+            <div id = 'headerText'>
+                <h1>와인 추천</h1>
+            </div>
+        </header>
+
+        <main>
+            <div class = 'blog' id = 'content'>
+                <div class = 'about'>
+                    <div class = 'about-content'>
+                        <img src = 'static/IMG/red.png' id = 'redWine'>
+                    </div>
+                    <div class = 'about-content'>
+                        <br>
+                        <br>
+                        <br>
+                        <h2> 와인 추천 </h2>
+                        <br>
+                        <p>오늘은 와인이 땡긴다!</p>
+                        <p>어떤 와인이 좋을까? </p>
+                    </div>
+                </div>
+                <div class = 'about'>
+                    <form>
+                        <input type = "button" value = "추천 받기!"  id = 'Button' class = "ghost-button">
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <div id="bg" class="hidden"></div>
+            <div id="popup" class="hidden">
+                <h3> 강 력 추 천 </h3>
+                <table id= "info-table">
+                    <thead>
+                        <tr>
+                            <th>이름</th>
+                            <th>생산지</th>
+                            <th>포도 품종</th>
+                            <th>알코올 도수</th>
+                            <th>어울리는 음식</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ value[1] }}</td>
+                            <td>{{ value[2] }}</td>
+                            <td>{{ value[3] }}</td>
+                            <td>{{ value[4] }}</td>
+                            <td>{{ value[5] }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot><tr></tr></tfoot>
+                </table>
+                <button id="exit" class="button">exit</button>
+            </div>
+            
+
+            <!-- script -->
+            <script>
+                const red = document.querySelector("#Button");
+                const bg = document.querySelector("#bg");
+                const popup = document.querySelector("#popup");
+                const exit = document.querySelector("#exit");
+        
+                red.addEventListener("click",function(){
+                    bg.classList.remove("hidden");
+                    popup.classList.remove("hidden");
+                });
+
+                exit.addEventListener("click",function(){
+                    bg.classList.add("hidden");
+                    popup.classList.add("hidden");
+                });
+            </script>
+        </body>
+    </div>
+</body>
+
+</html>
+
