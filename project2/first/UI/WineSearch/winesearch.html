@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type ="text/css" rel = "stylesheet" href = "WineSearch/WineSearch.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="WineSearch/WineSearch.js"></script>
+</head>
+<div name="searchDiv">
+    <table name="searchTable">
+        <tr>
+            <th>name</th>
+            <td colspan="5"><input type="text" class="name"></td>
+        </tr>
+    </table>
+    <select name="sortMethod">
+        <option value="0">name</option>
+        <option value="1">sweet</option>
+        <option value="2">acidity</option>
+        <option value="3">body</option>
+        <option value="4">tannin</option>
+        <option value="5">price</option>
+    </select>
+    <select name="ascOrDesc">
+        <option value="0">ascending</option>
+        <option value="1">descending</option>
+    </select>
+    <button type="button", name="searchButton">search</button>
+    <a href='/add'>add</a>
+</div>
+<div name="resultDiv">
+    <table name="resultTable">
+        <thead>
+            <tr>
+                <th>name</th>
+                <th>nation</th>
+                <th>type</th>
+                <th>sweet</th>
+                <th>acidity</th>
+                <th>body</th>
+                <th>tannin</th>
+                <th>price</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <div name="buttonContainerDiv"></div>
+</div>
+</html>

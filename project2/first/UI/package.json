@@ -1,0 +1,19 @@
+{
+  "name": "team_ad",
+  "version": "1.0.0",
+  "description": "|version|date|comment|\r |-|-|-|\r |0.1|01.09|adding design and planning|",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@lab.t3q.co.kr:internship/team_ad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sammy": "^0.7.6"
+  }
+}

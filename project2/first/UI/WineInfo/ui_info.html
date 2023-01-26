@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<!-- <link type ="text/css" rel = "stylesheet" href = "css/ui_info.css"/> -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="WineInfo/ui_info.js"></script>
+
+
+    <head>
+        <title>
+            UI_INFODATA
+        </title>
+        <style>
+        
+            img { display : block; margin : auto;}
+            
+    
+        </style>
+
+    </head>
+    <body>
+        <header>
+            <h1 style="background-color:rgb(56, 2, 59); color:white; text-align:center; width:100%;font-size:200%" >
+                WINE DETAIL INFO
+            </h1>
+        
+            <h2 id = "name" name1 = "name" style="background-color:rgb(185, 126, 188);color:white;border-color:rgb(110, 36, 174);border-width:10px;text-align:center;font-size:150%">
+            </h2>
+            <br>
+            <table3 style="color:rgb(56,2,59);text-align:center;width:100%;font-size:120%">
+                <tr style="color:rgb(56,2,59);text-align:center;width:100%;font-size:120%">
+                    <th2>Type:  </th2><th2><data class="type" id="type"></data></th2><th2>  Year:  </th2><th><data class="year" id="year"></data></th2><th2>  Price:  </th2><data class="price" id="price"></data><th2> 원</th2>  Varieties:  </tr2><th2><data class="varieties" id="varieties"></data> </th2>
+                </tr>
+            </table3>
+            <br>
+        </header>    
+        
+        <table>
+            <div>
+                <br>
+                <img src="WineInfo/glass_wine.png", alt="이미지가 없나봐요.." style="height:300px">,
+            </div>
+
+            </div>
+        </table>
+        <table style="text-align:center;border:none;width: 100%">
+            <tr >
+                <td style = "background-color:#ddd;">
+                    <tr style="background-color:rgb(56, 2, 59)">
+                        <th style="color:white">Sweet</th>
+                        <th style="color:white">Acidity</th>
+                        <th style="color:white">Body</th>
+                        <th style="color:white">TANNIN</th>      
+                    </tr>
+                    <tr style="background-color:lightgrey">
+                        <th name = "Sweet"><data class="type" id="sweet"></data></th>
+                        <th name = "Acidity"><data class="acidity" id="acidity"></data></th>
+                        <th name = "Body"><data class="body" id="body"></data></th>
+                        <th name = "TANNIN"><data class="tannin" id="tannin"></data></th>
+ s                   <tr style="background-color:rgb(56, 2, 59)">
+                        <th style="color:white">USE</th>
+                        <th style="color:white">Nation</th>
+                        <th style="color:white">Producer</th>
+                        <th style="color:white">Local</th>
+                    </tr>
+                    <tr style="background-color:lightgrey">
+                        <th name = "USE"><data class="use" id="use"></data></th>
+                        <th name = "Nation"><data class="nation" id="nation"></data></th>
+                        <th name = "Producer"><data class="producer" id="producer"></data></th>
+                        <th name = "Local"><data class="local" id="local"></data></th>
+                    <tr style="background-color:rgb(56, 2, 59)">
+                        <th style="color:white">abv</th>
+                        <th style="color:white">degree</th>
+                        <th style="color:white">ml</th>
+                    </tr>
+                    <tr style="background-color:lightgrey">
+                        <th name = "abv"><data class="abv_l" id="abv_l"></data>~<data class="abv_upper" id="abv_upper"></data></th>
+                        <th name = "degree"><data class="degree_l" id="degree_l"></data>~<data class="degree_h" id="degree_h"></data></th>
+                        <th name = "ml"><data class="ml" id= "ml"></data></th>
+                    </tr>
+                    <tr style="background-color:rgb(156, 51, 51)">
+                        <th><a id="edit" href="/">edit</a></th>
+                        <th><a href="/">OK</a></th>
+                        <!--th><input name = "deletebutton" type="submit" value="DELETE"></th-->
+                    </tr>
+                </td>
+
+            </tr>        
+        </table>
+        <br>
+    </body>
+</html> 

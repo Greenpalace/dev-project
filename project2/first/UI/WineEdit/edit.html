@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Team AD </title>
+    <link rel ='stylesheet' href = 'http://localhost/WineEdit/edit.css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id = 'container'>
+        <!-- header -->
+        <header>
+            <div id = 'logo'>
+                <a>
+                    <h1>TeamAD</h1>
+                </a>
+            </div>
+            <div id = 'headerText'>
+                <h1>자료 수정</h1>
+            </div>
+        </header>
+
+        <main>
+            <form class = 'wine' id = 'content'>
+                
+                <div class = 'info' style="text-align: center;">
+                    <input type="text" name = "name" id = "name" value="" placeholder="와인 이름...">
+                </div>
+                <div class = 'info' style="text-align: center;">
+                    <input type="text" name = "producer" id = "producer" value="" placeholder="제조사...">
+                </div>
+                <div class = 'info' style="text-align: center;">
+                    <select id = "nation" maxlength="30" >
+
+                    </select>
+                </div>
+                <div class = 'info' style="text-align: center;">
+                    <select id="local" maxlength="30" >
+
+                    </select>
+                </div>
+                <div class = 'info' style="text-align: center;">
+                    <select id="varieties" maxlength="30" >
+
+                    </select>
+                </div>
+                <div class = 'info' style="text-align: center;">
+                    <select id="type" maxlength="30" >
+
+                    </select>
+                </div>
+                <div class = 'info' style="text-align: center;">
+                    <select id="use" maxlength="30" >
+
+                    </select>
+                </div>
+                <div class = 'info1' style="text-align: center;">
+                    <input type="number" name="abv_h" id = "abv_h" value="" placeholder="알코올 도수 상한...">
+                    <input type="number" name="abv_l" id = "abv_l" value="" placeholder="알코올 도수 하한...">
+                    <input type="number" name="degree_h" id = "degree_h" value="" placeholder="음용 온도 상한...">
+                    <input type="number" name="degree_l" id = "degree_l" value="" placeholder="음용 온도 하한...">
+                </div>
+                <div class = 'info2' style="text-align: center;">
+                    <input type="number" name="sweet" id = "sweet" value="" placeholder="당도...">
+                    <input type="number" name="acidity" id = "acidity" value="" placeholder="산도...">
+                    <input type="number" name="body" id = "body" value="" placeholder="바디감...">
+                    <input type="number" name="tannin" id = "tannin" value="" placeholder="탄닌 함유정도...">
+                </div>
+                <div class = 'info3' style="text-align: center;">
+                    <input type="number" name="price" id = "price" value="" placeholder="가격....">
+                    <input type="number" name="year" id = "year" value="" placeholder="제조 년도...">
+                    <input type="number" name="ml" id = "ml" value="" placeholder="용량...">
+                </div>
+                <div class="info" style="text-align: center;">
+                    <button type="button" name="add" id="edit_btn">편집</button>
+                    <a id="cancel" href="/">취소</a>
+                </div>
+                <script type="text/javascript">
+                    var wid= window.location.pathname.match(/\/\d+/)[0].slice(1);
+                    $("#cancel").prop("href", `/${wid}`)
+                    var svc_port = 30804;
+                    var ip= "172.18.228.19";
+                    let name = document.getElementById('name');
+                    let producer = document.getElementById('producer');
+                    let nation = document.getElementById('nation');
+                    let local = document.getElementById('local');
+                    let varieties = document.getElementById('varieties');
+                    let type = document.getElementById('type');
+                    let use = document.getElementById('use');
+                    let abv_h = document.getElementById('abv_h');
+                    let abv_l = document.getElementById('abv_l');
+                    let degree_h = document.getElementById('degree_h');
+                    let degree_l = document.getElementById('degree_l');
+                    let sweet = document.getElementById('sweet');
+                    let acidity = document.getElementById('acidity');
+                    let body = document.getElementById('body');
+                    let tannin = document.getElementById('tannin');
+                    let price = document.getElementById('price');
+                    let year = document.getElementById('year');
+                    let ml = document.getElementById('ml');
+                    var nothing = "---";
+                    function getKeyByValue(obj, value) {
+                        return Object.keys(obj).find(key => obj[key] === value)
+                    }
+                    $(function() {
+                        $("#edit_btn").on("click", function(){
+                        var svc_port = 30804;
+                        let name = document.getElementById('name');
+                        let producer = document.getElementById('producer');
+                        let nation = document.getElementById('nation');
+                        let local = document.getElementById('local');
+                        let varieties = document.getElementById('varieties');
+                        let type = document.getElementById('type');
+                        let use = document.getElementById('use');
+                        let abv_h = document.getElementById('abv_h');
+                        let abv_l = document.getElementById('abv_l');
+                        let degree_h = document.getElementById('degree_h');
+                        let degree_l = document.getElementById('degree_l');
+                        let sweet = document.getElementById('sweet');
+                        let acidity = document.getElementById('acidity');
+                        let body = document.getElementById('body');
+                        let tannin = document.getElementById('tannin');
+                        let price = document.getElementById('price');
+                        let year = document.getElementById('year');
+                        let ml = document.getElementById('ml');
+                        if (name.value == "") {
+                        alert("이름을 입력해주세요");
+                        name.focus();
+                        return;
+                        }
+                
+                        if (producer.value == "") {
+                        alert("제조사를 입력해주세요");
+                        producer.focus();
+                        return;
+                        }
+                
+                        if (nation.value == "") {
+                        alert("제조국 입력해주세요");
+                        nation.focus();
+                        return;
+                        }
+                
+                        if (local.value == "") {
+                        alert("제조지역을 입력해주세요");
+                        local.focus();
+                        return;
+                        }
+                
+                        if (varieties.value == "") {
+                        alert("대표 품종를 검색해주세요");
+                        varieties.focus();
+                        return;
+                        }
+
+                        if (type.value == "") {
+                        alert("와인 종류를 입력해주세요");
+                        type.focus();
+                        return;
+                        }                        
+
+                        if (use.value == "") {
+                        alert("주요 목적를 입력해주세요");
+                        use.focus();
+                        return;
+                        }
+                
+                        if (abv_h.value == "") {
+                        alert("알코올 도수 상한을 입력해주세요.");
+                        abv_h.focus();
+                        return;
+                        }
+                        if (abv_h.value >= 100) {
+                        alert("알코올 도수는 100도를 초과할 수 없습니다.");
+                        abv_h.focus();
+                        return;
+                        }    
+                        if (abv_l.value == "") {
+                        alert("알코올 도수 하한을 입력해주세요.");
+                        abv_l.focus();
+                        return;
+                        }
+                        if (abv_l.value <= 0) {
+                        alert("알코올 도수는 0도 이하로 내려갈 수 없습니다.");
+                        abv_l.focus();
+                        return;
+                        }  
+                        if (Number(abv_l.value) > Number(abv_h.value)) {
+                        alert("알코올 도수 하한은 상한을 초과할 수 없습니다.");
+                        abv_l.focus();
+                        return;
+                        }                           
+                        if (degree_h.value == "") {
+                        alert("음용 온도 상한을 입력해주세요.");
+                        degree_h.focus();
+                        return;
+                        }
+                        if (degree_h.value >= 100) {
+                        alert("사람은 100도 이상에서 살아갈 수 없습니다.");
+                        degree_h.focus();
+                        return;
+                        }    
+                        if (degree_l.value == "") {
+                        alert("음용 온도 하한을 입력해주세요.");
+                        degree_l.focus();
+                        return;
+                        }
+                        if (degree_l.value <= 0) {
+                        alert("당신은 러시아 사람입니까?");
+                        degree_l.focus();
+                        return;
+                        }  
+                        if (Number(degree_l.value) > Number(degree_h.value)) {
+                        alert("음용 온도 하한은 상한을 초과할 수 없습니다.");
+                        degree_l.focus();
+                        return;
+                        }    
+                        if (sweet.value == "") {
+                        alert("당도를 입력해주세요.");
+                        sweet.focus();
+                        return;
+                        }
+                        if (acidity.value == "") {
+                        alert("산도를 입력해주세요.");
+                        acidity.focus();
+                        return;
+                        }
+                        if (body.value == "") {
+                        alert("바디감을 입력해주세요.");
+                        body.focus();
+                        return;
+                        }
+                        if (tannin.value == "") {
+                        alert("탄닌 함유 정도를 입력해주세요.");
+                        tannin.focus();
+                        return;
+                        }
+                        if (price.value == "") {
+                        alert("가격을 입력해주세요.");
+                        price.focus();
+                        return;
+                        }
+                        if (year.value == "") {
+                        alert("몇 년산인지를 입력해주세요.");
+                        year.focus();
+                        return;
+                        }
+                        if (year.value <= 0) {
+                        alert("당신은 과거인입니까?.");
+                        year.focus();
+                        return;
+                        }
+                        if (year.value >=2023) {
+                        alert("당신은 미래인입니까?");
+                        year.focus();
+                        return;
+                        }
+                        if (ml.value == "") {
+                        alert("용량을 입력해주세요.");
+                        ml.focus();
+                        return;
+                        }
+                
+                        var raw = { 
+                                "name":name.value,
+                                "producer": producer.value,
+                                "nation": nation.value,
+                                "local": local.value,
+                                "varieties": varieties.value,
+                                "type": type.value,
+                                "use": use.value,
+                                "abv_h": abv_h.value,
+                                "abv_l": abv_l.value,
+                                "degree_h": degree_h.value,
+                                "degree_l": degree_l.value,
+                                "sweet": sweet.value,
+                                "acidity": acidity.value,
+                                "body": body.value,
+                                "tannin": tannin.value,
+                                "price": price.value,
+                                "year": year.value,
+                                "ml": ml.value
+                            }
+                
+
+                        $.ajax({
+                            url: `http://${ip}:${svc_port}/wine/${wid}`, //${request.getheader('w:id')}
+                            type: "PATCH",
+                            contentType: "application/json",
+                            data: JSON.stringify(raw),
+                            error: function() {
+                                console.log("error")
+                            },
+                            success: (response) => {
+                                window.history.back()
+                            }
+                        });
+                    })})
+                    
+                    $(function() {
+                        $("#cancel_btn").on("click", function(){
+                            window.location.href = `http://localhost/${wid}`
+                        })
+                    })
+                    var pairDict = {};
+                    $(function() {
+                        $.each(["nation","local","varieties","type","use"], function(_,val){
+                            pairDict[val] = {}
+                            nations = $("#nation")
+                            locals = $("#local")
+                            variety = $("#varieties")
+                            types = $("#type")
+                            uses = $("#use")
+                            nations.empty()
+                            locals.empty()
+                            variety.empty()
+                            types.empty()
+                            uses.empty()
+                            nations.append('<option value="">' + nothing + '</option>')
+                            locals.append('<option value="">' + nothing + '</option>')
+                            variety.append('<option value="">' + nothing + '</option>')
+                            types.append('<option value="">' + nothing + '</option>')
+                            uses.append('<option value="">' + nothing + '</option>')
+                            $.ajax({
+                            type: "GET",
+                            url: `http://${ip}:${svc_port}/${val}`,
+                            contentType : "application/json; charset-utf-8",
+                            error: function() { 
+                                console.log('error');
+                            },
+                            success: function(response) {
+                                $.each(response, function(_,dict){
+                                    var key = Object.keys(dict)[0];
+                                    pairDict[val][key] = dict[key]
+                                    if (val=='nation'){
+                                    nations.append('<option value="' + key + '">' + dict[key] + '</option>')}
+                                    if (val=='local'){
+                                        variety.append('<option value="' + key + '">' + dict[key] + '</option>')}
+                                    if (val=='varieties'){
+                                        variety.append('<option value="' + key + '">' + dict[key] + '</option>')}
+                                    if (val=='type'){
+                                        types.append('<option value="' + key + '">' + dict[key] + '</option>')}
+                                    if (val=='use'){
+                                        uses.append('<option value="' + key + '">' + dict[key] + '</option>')}
+                                    flag += 1
+                                    if (flag == 5)
+                                    {
+                                        getData()
+                                    }
+                                })
+                            }
+                        })
+                        })
+                        ;
+                    });    
+                    var flag = 0;
+                    var detailDict = {};
+                    function getData (){
+                        
+
+                        $.ajax({
+                            type: "GET",
+                            url : `http://${ip}:${svc_port}/wine/${wid}`, //${request.getheader('w:id')}
+                            contentType : "application/json; charset-utf-8",
+                            error: function() {
+                                console.log('error');
+                            },
+                            success : function(response){
+                                $.each(Object.keys(response), function(_,key){
+                                    detailDict[key]= response[key]
+                                    
+                                })
+                                document.getElementById('name').value= detailDict["name"]
+                                document.getElementById('producer').value= detailDict["producer"]
+                                document.getElementById('nation').value= detailDict["nation"]
+                                $.ajax({
+                                    type: "GET",
+                                    url: `http://${ip}:${svc_port}/localbynation`,
+                                    data:{"nation": detailDict["nation"]},
+                                    contentType : "application/json;",
+                                    error : function(){
+                                        console.log('error');
+                                    },
+                                    success : function(response){
+                                        
+                                        for (let i=0; i< response["data"].length; i++)
+                                        {                                   
+                                            if (response["data"][i]==pairDict['local'][detailDict["local"]]){
+                                            locals.append('<option value="' + getKeyByValue(pairDict['local'],response["data"][i]) + '" selected>' + response["data"][i] + '</option>')
+                                            } else {
+                                                locals.append('<option value="' + getKeyByValue(pairDict['local'],response["data"][i]) + '">' + response["data"][i] + '</option>')
+                                            }
+
+                                        }
+                                        
+                                    } 
+                                })
+                                document.getElementById('nation').value= detailDict["nation"]
+                                document.getElementById('varieties').value= detailDict["varieties"]
+                                document.getElementById('type').value= detailDict["type"]
+                                document.getElementById('use').value= detailDict["use"]
+                                document.getElementById('abv_h').value= detailDict["abv_upper"]
+                                document.getElementById('abv_l').value= detailDict["abv_lower"]
+                                document.getElementById('degree_h').value= detailDict["degree_upper"]
+                                document.getElementById('degree_l').value= detailDict["degree_lower"]
+                                document.getElementById('sweet').value= detailDict["sweet"]
+                                document.getElementById('acidity').value= detailDict["acidity"]
+                                document.getElementById('body').value= detailDict["body"]
+                                document.getElementById('tannin').value= detailDict["tannin"]
+                                document.getElementById('year').value= detailDict["year"]
+                                document.getElementById('price').value= detailDict["price"]
+                                document.getElementById('ml').value= detailDict["ml"]
+
+
+                            }
+                            
+                        })
+
+                    }
+
+                    $(function(){
+                        $("#nation").on("change", function(){
+                            var locals=$("#local");
+                            let nation = document.getElementById('nation');
+                            locals.empty()
+                            locals.append('<option value="">' + nothing + '</option>')
+
+                            $.ajax({
+                                type: "GET",
+                                url: `http://${ip}:${svc_port}/localbynation`,
+                                data:{"nation": this.value},
+                                contentType : "application/json;",
+                                error : function(){
+                                    console.log('error');
+                                },
+                                success : function(response){
+                                    
+                                    for (let i=0; i< response["data"].length; i++)
+                                    {                                       
+                                        locals.append('<option value="' + getKeyByValue(pairDict['local'],response["data"][i]) + '">' + response["data"][i] + '</option>')
+                                    }
+                                    
+                                } 
+                            })
+
+                        })
+                    })
+
+                </script>
+            
+                    
+                    
+            </form>
+        </main>
+    </div>
+</body>
+
+</html>
+

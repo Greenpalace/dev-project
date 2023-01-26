@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="WineSearch/WineSearch.js"></script>
+</head>
+<h3 class="ui header">Search Page</h3>
+<div id="searchPage">
+    <div id="search">
+        <table class="ui fixed structured table" id="searchTable">
+        </table>
+    </div>
+
+    <div class="ui menu" id="menu">
+        <a class="ui secondary basic button item" href='/add'>add</a>
+        <div class="right menu">
+            <div class="header item">Sort By</div>
+            <div class="ui dropdown item" id="sortMethod">
+                <input type="hidden" value="0">
+                <span class="text">name</span>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item" data-value="0">name</div>
+                    <div class="item" data-value="1">sweet</div>
+                    <div class="item" data-value="2">acidity</div>
+                    <div class="item" data-value="3">body</div>
+                    <div class="item" data-value="4">tannin</div>
+                    <div class="item" data-value="5">price</div>
+                </div>
+            </div>
+            <div class="ui dropdown item" id="ascOrDesc">
+                <input type="hidden" value="0">
+                <span class="text">ascending</span>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <div class="item" data-value="0">ascending</div>
+                    <div class="item" data-value="1">descending</div>
+                </div>
+            </div>
+            <button class="ui primary basic button item" type="button", id="searchButton">search</button>
+        </div>
+    </div>
+
+    <div id="result">
+        <h4 class="ui horizontal divider">Result</h4>
+        <table class="ui fixed padded table" id="resultTable">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>nation</th>
+                    <th>type</th>
+                    <th>sweet</th>
+                    <th>acidity</th>
+                    <th>body</th>
+                    <th>tannin</th>
+                    <th>price</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan=8>
+                        <div class="ui right floated pagination menu" id="buttonContainerDiv">
+                            <div class="ui scrolling dropdown item" id="pageDropDown">
+                                <input type="hidden">
+                                <span class="text"></span>
+                                <div class="menu"></div>
+                            </div>
+                            <a class="icon item" id="leftLimitPageButton">
+                                <i class="angle double left icon"></i>
+                            </a>
+                            <a class="icon item" id="leftPageButton">
+                                <i class="angle left icon"></i>
+                            </a>
+                            <a class="icon item" id="rightPageButton">
+                                <i class="angle right icon"></i>
+                            </a>
+                            <a class="icon item" id="rightLimitPageButton">
+                                <i class="angle double right icon"></i>
+                            </a>
+                        </div>
+                    </th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+</html>
